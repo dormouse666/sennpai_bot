@@ -1,0 +1,10 @@
+/dogeza/dogeza_1.jpg
+/dogeza/dogeza_2.jpg
+/dogeza/dogeza_3.jpg
+/dogeza/dogeza_4.jpg
+/dogeza/dogeza_5.jpg
+/dogeza/dogeza_6.jpg
+/dogeza/dogeza_7.jpg
+/dogeza/dogeza_8.jpg
+/dogeza/dogeza_9.jpg
+/dogeza/dogeza_10.jpg
