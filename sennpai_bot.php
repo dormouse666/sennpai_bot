@@ -165,6 +165,16 @@ function replyGohan($TwitterOAuth, $value, $gohanAccesskey, $gohanText)
         return;
     }
 
+    // 0件の時
+    $gohanNum = $gonahObj->total_hit_count;
+    //$gohanNum = 0;
+    if($gohanNum == 0)
+    {
+        $resMessage = '@'.$value->user->screen_name.' '.'0件です(´・ω・`)';
+        $response = $TwitterOAuth->post('statuses/update', array('status' => $resMessage, 'in_reply_to_status_id'=>$value->id_str));
+        return;
+    }
+
     // 成功してたら1件だけ取得
     $i = 0;
     $rand = rand(0, $hitNum-1);
@@ -182,14 +192,14 @@ function replyGohan($TwitterOAuth, $value, $gohanAccesskey, $gohanText)
         //var_dump($i);
     }
 
-    $gohanNum = $gonahObj->total_hit_count;
     if(!empty($gohanText))
     {
         $gohanText = "「".preg_replace("/,/", "、", $gohanText)."」は";
     }
     //var_dump($gohanText);
 
-    $gohanStr = $gohanText.$gohanNum."件あった、オススメはこれかな\n".$gohanName."\n".$gohanUrl."\n"."Powered by ぐるなび";
+    $credit = 'Supported by ぐるなびWebService(http://api.gnavi.co.jp/api/scope/)';
+    $gohanStr = $gohanText.$gohanNum."件あった、オススメはこれかな\n".$gohanName."\n".$gohanUrl."\n\n".$credit;
     $resMessage = '@'.$value->user->screen_name.' '.$gohanStr;
     $response = $TwitterOAuth->post('statuses/update', array('status' => $resMessage, 'in_reply_to_status_id'=>$value->id_str));
 
