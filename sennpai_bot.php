@@ -189,9 +189,8 @@ function replyGohan($TwitterOAuth, $value, $gohanAccesskey, $gohanText)
     }
     //var_dump($gohanText);
 
-    $gohanStr = $gohanText.$gohanNum."件あった、オススメはこれかな\n".$gohanName."\n".$gohanUrl;
-    $gohanMessage = 'ﾄﾞｿﾞｰ';
-    $resMessage = '@'.$value->user->screen_name.' '.$gohanMessage."\n".$gohanStr;
+    $gohanStr = $gohanText.$gohanNum."件あった、オススメはこれかな\n".$gohanName."\n".$gohanUrl."\n"."Powered by ぐるなび";
+    $resMessage = '@'.$value->user->screen_name.' '.$gohanStr;
     $response = $TwitterOAuth->post('statuses/update', array('status' => $resMessage, 'in_reply_to_status_id'=>$value->id_str));
 
     // エラー出力
